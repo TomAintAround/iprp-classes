@@ -7,7 +7,10 @@
 
     outputs = inputs: let
         system = "x86_64-linux";
-        pkgs = inputs.nixpkgs.legacyPackages.${system};
+        pkgs = import inputs.nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+        };
     in {
         devShells.${system}.default =
             pkgs.mkShell {
