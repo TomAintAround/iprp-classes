@@ -1,21 +1,10 @@
 # Exercício 1.17
 
-from math import atan, sqrt, pow, pi
+from math import atan2, sqrt, pow, pi
 
 def polar(x, y):
     distancia = sqrt(pow(x, 2) + pow(y, 2))
-
-    if x == 0:
-        if y > 0:
-            angulo = pi / 2
-        elif y < 0:
-            angulo = 3 * pi / 2
-        else:
-            angulo = 0
-    elif x < 0:
-        angulo = atan(y / x) + pi
-    else:
-        angulo = atan(y / x)
+    angulo = atan2(y, x)
 
     return (distancia, angulo)
 
