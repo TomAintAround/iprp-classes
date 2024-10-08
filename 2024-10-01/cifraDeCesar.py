@@ -7,9 +7,8 @@ def substituir(letra, distancia):
         fazerFrase(maiusculas, letra, distancia)
 
 def fazerFrase(capital, letra, distancia):
-    novaFrase = ''
     novaLetra = (capital.index(letra) + distancia) % 26
-    novaFrase += capital[novaLetra]
+    novaFrase = capital[novaLetra]
     print(novaFrase, end='')
 
 frase = str(input("Insira a sua frase:\n").strip())
@@ -18,9 +17,8 @@ distancia = int(input("Insira a distância: ").strip())
 minusculas = 'abcdefghijklmnopqrstuvwxyz'
 maiusculas = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
-novaFrase = ''
 for letra in frase:
-    if letra != ' ':
+    if letra in minusculas or letra in maiusculas:
         substituir(letra, distancia)
     else:
-        print(' ', end='')
+        print(letra, end='')
