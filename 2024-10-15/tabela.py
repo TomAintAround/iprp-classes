@@ -17,7 +17,7 @@ def configurarCelulas(medidaTabela, numeroOcurrencias, dimensao):
     somaPercentagem = sum(listaPercentagem)
 
     if somaPercentagem != 100:
-        return configurarCelulas(medidaTabela, numeroOcurrencias, dimensao)
+        configurarCelulas(medidaTabela, numeroOcurrencias, dimensao)
     else:
         return list(map(lambda numero: numero * medidaTabela / 100, listaPercentagem))
 
@@ -31,9 +31,7 @@ def desenharTabela(alturaTabela, comprimentoTabela, alturaCelulas, comprimentoCe
             turtle.left(90)
             turtle.forward(comprimento)
             turtle.left(90)
-            return borda(altura, comprimento, repeticoes - 1)
-        else:
-            return None
+            borda(altura, comprimento, repeticoes - 1)
     
     def linhas(comprimentoTabela, alturaCelulas, progresso):
         if progresso < len(alturaCelulas) - 1:
@@ -43,11 +41,10 @@ def desenharTabela(alturaTabela, comprimentoTabela, alturaCelulas, comprimentoCe
             turtle.left(180)
             turtle.forward(comprimentoTabela)
             turtle.left(90)
-            return linhas(comprimentoTabela, alturaCelulas, progresso + 1)
+            linhas(comprimentoTabela, alturaCelulas, progresso + 1)
         else:
             turtle.forward(alturaCelulas[progresso])
             turtle.left(90)
-            return None
     
     def colunas(alturaTabela, alturaCelulas, comprimentoCelulas, espacoCabecalho, progresso):
         if progresso < len(comprimentoCelulas) - 1:
@@ -63,9 +60,7 @@ def desenharTabela(alturaTabela, comprimentoTabela, alturaCelulas, comprimentoCe
             turtle.forward(alturaTabela + espacoCabecalho)
             turtle.left(90)
             turtle.pendown()
-            return colunas(alturaTabela, alturaCelulas, comprimentoCelulas, espacoCabecalho, progresso + 1)
-        else:
-            return None
+            colunas(alturaTabela, alturaCelulas, comprimentoCelulas, espacoCabecalho, progresso + 1)
             
     repeticoes = 2
     comecoDaLista = 0
