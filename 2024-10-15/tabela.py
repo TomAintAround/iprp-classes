@@ -22,9 +22,6 @@ def configurarCelulas(medidaTabela, numeroOcurrencias, dimensao):
         return list(map(lambda numero: numero * medidaTabela / 100, listaPercentagem))
 
 def desenharTabela(alturaTabela, comprimentoTabela, alturaCelulas, comprimentoCelulas, espacoCabecalho):
-    turtle.hideturtle()
-    turtle.right(90)
-
     def borda(altura, comprimento, repeticoes):
         if repeticoes > 0:
             turtle.forward(altura)
@@ -65,6 +62,8 @@ def desenharTabela(alturaTabela, comprimentoTabela, alturaCelulas, comprimentoCe
     repeticoes = 2
     comecoDaLista = 0
     
+    turtle.hideturtle()
+    turtle.right(90)
     borda(alturaCelulas[0], comprimentoTabela, repeticoes)
     turtle.penup()
     turtle.forward(alturaCelulas[0] + espacoCabecalho)
