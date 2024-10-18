@@ -11,5 +11,5 @@ def desenhar(comprimento, extra, limite, progresso):
         return None
 
 turtle.hideturtle()
-desenhar(100, 10, 35, 0)
+desenhar(10, 10, 35, 0)
 turtle.exitonclick()
