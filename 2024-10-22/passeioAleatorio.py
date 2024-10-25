@@ -48,8 +48,8 @@ def passeio(posInicial: float, alturaLinha: float, passosRestantes: int) -> None
     while passosRestantes > 0:
         angulo: float = choice(angulosPossiveis)
         anguloRadianos: float = radians(angulo)
-        xSeguinte = turtle.xcor() + cos(anguloRadianos) * alturaLinha
-        ySeguinte = turtle.ycor() + sin(anguloRadianos) * alturaLinha
+        xSeguinte: float = turtle.xcor() + cos(anguloRadianos) * alturaLinha
+        ySeguinte: float = turtle.ycor() + sin(anguloRadianos) * alturaLinha
         eMaior = lambda coordenada: abs(coordenada) > abs(posInicial)
         estaPerto = lambda coordenada: isclose(abs(coordenada), abs(posInicial))
         eMaiorCorrigido = lambda coordenada: eMaior(coordenada) and not estaPerto(coordenada)
