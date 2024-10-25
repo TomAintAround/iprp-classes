@@ -41,7 +41,7 @@ def passeio(posInicial: float, alturaLinha: float, passosRestantes: int) -> None
     angulosPossiveis: list = [90, -90, 0, 180]
 
     turtle.showturtle()
-    turtle.pen(pencolor='red', pensize=(alturaLinha / 20))
+    turtle.pen(pencolor='red', pensize=(alturaLinha / 10))
     turtle.teleport(xInicial, yInicial)
     turtle.dot(alturaLinha / 4)
 
