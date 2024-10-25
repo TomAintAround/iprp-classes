@@ -2,7 +2,7 @@
 
 import turtle
 from random import choice
-from math import pi, radians, sin, cos
+from math import pi, radians, sin, cos, isclose
 
 def perguntar(tipo, pergunta: str, fraseErro: str, condicao) -> float:
     valor = tipo(input(pergunta).strip())
@@ -50,8 +50,11 @@ def passeio(posInicial: float, alturaLinha: float, passosRestantes: int) -> None
         anguloRadianos: float = radians(angulo)
         xSeguinte = turtle.xcor() + cos(anguloRadianos) * alturaLinha
         ySeguinte = turtle.ycor() + sin(anguloRadianos) * alturaLinha
+        eMaior = lambda coordenada: abs(coordenada) > abs(posInicial)
+        estaPerto = lambda coordenada: isclose(abs(coordenada), abs(posInicial))
+        eMaiorCorrigido = lambda coordenada: eMaior(coordenada) and not estaPerto(coordenada)
 
-        if abs(xSeguinte) > abs(posInicial) or abs(ySeguinte) > abs(posInicial):
+        if eMaiorCorrigido(xSeguinte) or eMaiorCorrigido(ySeguinte):
             angulo += 180
         
         turtle.setheading(angulo)
