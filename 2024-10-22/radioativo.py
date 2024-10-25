@@ -23,9 +23,10 @@ def frame(comprimentoLado: float, raio: float) -> None:
         turtle.left(90)
     turtle.end_fill()
 
-def arco(raio: float, angulo: float = pi) -> None:
+def arco(raio: float) -> None:
+    anguloInicial: float = pi / 3
     for repeticoes in range(3):
-        novoAngulo: float = angulo + 2 * pi / 3 * repeticoes
+        novoAngulo: float = anguloInicial + 2 * pi / 3 * repeticoes
         turtle.teleport(raio * cos(novoAngulo), raio * sin(novoAngulo))
         turtle.setheading(turtle.towards(0,0))
         turtle.pen(fillcolor='black')
