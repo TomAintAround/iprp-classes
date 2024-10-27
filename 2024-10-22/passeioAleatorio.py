@@ -2,7 +2,7 @@
 
 import turtle
 from random import choice
-from math import pi, radians, sin, cos, isclose
+from math import radians, sin, cos, isclose
 
 def perguntar(tipo, pergunta: str, fraseErro: str, condicao) -> float:
     valor = tipo(input(pergunta).strip())
@@ -12,81 +12,88 @@ def perguntar(tipo, pergunta: str, fraseErro: str, condicao) -> float:
     else:
         raise ValueError(fraseErro)
 
-def quadradro(lado: float) -> None:
-    for repeticoes in range(4):
-        turtle.forward(lado)
+def retangulo(comprimento: float, altura: float) -> None:
+    for _ in range(2):
+        turtle.forward(comprimento)
+        turtle.left(90)
+        turtle.forward(altura)
         turtle.left(90)
 
-def linhas(angulo: int, comprimento: float, quantidade: int, posInicial: float, comprimentoColunas: float, alturaLinhas: float) -> None:
+def linhas(angulo: int, quantidade: int, xInicial: float, yInicial: float, ladoQuadrado: float, comprimento: float, eColuna: bool, eLinha: bool) -> None:
     turtle.setheading(angulo)
-    for linha in range(1, quantidade -1):
-        x: float = posInicial + comprimentoColunas * linha
-        y: float = posInicial + alturaLinhas * linha
+    for linha in range(1, quantidade):
+        x: float = xInicial + ladoQuadrado * linha * eColuna
+        y: float = yInicial + ladoQuadrado * linha * eLinha
         turtle.teleport(x, y)
         turtle.forward(comprimento)
 
-def coordenadasPossiveis(posInicial: float, alturaLinha: float) -> list:
-    lista = [posInicial]
-    multiplicador = 1
-    while lista[-1] < -posInicial:
-        proximoElemento = posInicial + alturaLinha * multiplicador
-        multiplicador += 1
-        lista += [proximoElemento]
+def coordenadasPossiveis(quantidade: int, posicaoInicial: float, ladoQuadrado: float) -> list:
+    lista: list = []
+    for elemento in range(quantidade + 1):
+        posicao: float = posicaoInicial + ladoQuadrado * elemento
+        lista += [posicao]
     return lista
 
-def passeio(posInicial: float, alturaLinha: float, passosRestantes: int) -> None:
-    coordenadas: list = coordenadasPossiveis(posInicial, alturaLinha)
-    xInicial: float = choice(coordenadas)
-    yInicial: float = choice(coordenadas)
-    angulosPossiveis: list = [90, -90, 0, 180]
+def posicaoInicialAleatoria(quantidadeColunas: int, quantidadeLinhas: int, xInicial: float, yInicial: float, ladoQuadrado: float) -> None:
+    x: float = choice(coordenadasPossiveis(quantidadeColunas, xInicial, ladoQuadrado))
+    y: float = choice(coordenadasPossiveis(quantidadeLinhas, yInicial, ladoQuadrado))
+    turtle.pen(pencolor='red')
+    turtle.teleport(x, y)
+    turtle.dot(ladoQuadrado / 4)
 
-    turtle.showturtle()
-    turtle.pen(pencolor='red', pensize=(alturaLinha / 10))
-    turtle.teleport(xInicial, yInicial)
-    turtle.dot(alturaLinha / 4)
+def passeioAleatorio(numeroPassos: int, ladoQuadrado: float, xInicial: float, yInicial: float) -> None:
+    turtle.pen(pencolor='red', pensize=(ladoQuadrado / 10))
+    for _ in range(numeroPassos):
+        anguloAtual: int = choice([90, -90, 0, 180])
+        proximoX: float = turtle.xcor() + cos(radians(anguloAtual)) * ladoQuadrado
+        proximoY: float = turtle.ycor() + sin(radians(anguloAtual)) * ladoQuadrado
+        eMaiorX: bool = abs(proximoX) > abs(xInicial)
+        eMaiorY: bool = abs(proximoY) > abs(yInicial)
+        eProximoX: bool = isclose(abs(proximoX), abs(xInicial))
+        eProximoY: bool = isclose(abs(proximoY), abs(yInicial))
+        coordenadaInvalidaX: bool = eMaiorX and not eProximoX
+        coordenadaInvalidaY: bool = eMaiorY and not eProximoY
+        coordenadaInvalida: bool = coordenadaInvalidaX or coordenadaInvalidaY
 
-    while passosRestantes > 0:
-        angulo: float = choice(angulosPossiveis)
-        anguloRadianos: float = radians(angulo)
-        xSeguinte: float = turtle.xcor() + cos(anguloRadianos) * alturaLinha
-        ySeguinte: float = turtle.ycor() + sin(anguloRadianos) * alturaLinha
-        eMaior = lambda coordenada: abs(coordenada) > abs(posInicial)
-        estaPerto = lambda coordenada: isclose(abs(coordenada), abs(posInicial))
-        eMaiorCorrigido = lambda coordenada: eMaior(coordenada) and not estaPerto(coordenada)
-
-        if eMaiorCorrigido(xSeguinte) or eMaiorCorrigido(ySeguinte):
-            angulo += 180
+        if coordenadaInvalida:
+            anguloAtual += 180
         
-        turtle.setheading(angulo)
-        turtle.forward(alturaLinha)
-        passosRestantes -= 1
+        turtle.setheading(anguloAtual)
+        turtle.forward(ladoQuadrado)
 
 def main() -> None:
-    perguntaLadoGrelha: str = 'Insire o comprimento do lado da grelha: '
-    perguntaQuantidadeLinhas: str = 'Insire a quantidade de linhas e colunas: '
+    perguntaLadoQuadrado: str = 'Insire o comprimento do lado dos quadrados: '
+    perguntaQuantidadeLinhas: str = 'Insire a quantidade de linhas: '
+    perguntaQuantidadeColunas: str = 'Insire a quantidade de colunas: '
     perguntaNumeroPassos: str = 'Insire o número de passos: '
-    erroLadoGrelha: str = 'Insire um número maior que 0.'
+    erroLadoQuadrado: str = 'Insire um número maior que 0.'
     erroQuantidadeLinhas: str = 'Insire um número inteiro maior que 1.'
+    erroQuantidadeColunas: str = 'Insire um número inteiro maior que 1.'
     erroNumeroPassos: str = 'Insire um número inteiro maior que 0.'
-    condicaoLadoGrelha = lambda valor: valor > 0
-    condicaoQuantidadeLinhas = lambda valor: valor > 1
-    condicaoNumeroLinhas = lambda valor: valor > 0
+    condicaoLadoQuadrado = lambda valor: valor > 0
+    condicaoQuantidadeLinhas = lambda valor: valor > 0
+    condicaoQuantidadeColunas = lambda valor: valor > 0
+    condicaoNumeroPassos = lambda valor: valor > 0
     
-    ladoGrelha: float = perguntar(float, perguntaLadoGrelha, erroLadoGrelha, condicaoLadoGrelha)
-    posInicial: float = -ladoGrelha / 2
+    ladoQuadrado: float = perguntar(float, perguntaLadoQuadrado, erroLadoQuadrado, condicaoLadoQuadrado)
     quantidadeLinhas: int = perguntar(int, perguntaQuantidadeLinhas, erroQuantidadeLinhas, condicaoQuantidadeLinhas)
-    anguloLinhas: int = 0
-    anguloColunas: int = 90
-    alturaLinha: float = ladoGrelha / (quantidadeLinhas - 1)
-    numeroPassos: int = perguntar(int, perguntaNumeroPassos, erroNumeroPassos, condicaoNumeroLinhas)
+    quantidadeColunas: int = perguntar(int, perguntaQuantidadeColunas, erroQuantidadeColunas, condicaoQuantidadeColunas)
+    comprimentoLinha: float = ladoQuadrado * quantidadeColunas
+    alturaColuna: float = ladoQuadrado * quantidadeLinhas
+    xInicial: float = -(comprimentoLinha) / 2
+    yInicial: float = -(alturaColuna) / 2
+    anguloLinha: int = 0
+    anguloColuna: int = 90
+    numeroPassos: int = perguntar(int, perguntaNumeroPassos, erroNumeroPassos, condicaoNumeroPassos)
 
-    turtle.hideturtle()
+    #turtle.hideturtle()
     turtle.pen(speed=10)
-    turtle.teleport(posInicial, posInicial)
-    quadradro(ladoGrelha)
-    linhas(anguloColunas, ladoGrelha, quantidadeLinhas, posInicial, alturaLinha, 0)
-    linhas(anguloLinhas, ladoGrelha, quantidadeLinhas, posInicial, 0, alturaLinha)
-    passeio(posInicial, alturaLinha, numeroPassos)
+    turtle.teleport(xInicial, yInicial)
+    retangulo(comprimentoLinha, alturaColuna)
+    linhas(anguloColuna, quantidadeColunas, xInicial, yInicial, ladoQuadrado, alturaColuna, True, False)
+    linhas(anguloLinha, quantidadeLinhas, xInicial, yInicial, ladoQuadrado, comprimentoLinha, False, True)
+    posicaoInicialAleatoria(quantidadeColunas, quantidadeLinhas, xInicial, yInicial, ladoQuadrado)
+    passeioAleatorio(numeroPassos, ladoQuadrado, xInicial, yInicial)
     turtle.exitonclick()
 
 if __name__ == '__main__':
