@@ -1,0 +1,2 @@
+Acabei de criar o meu primeiro ficheiro em Python
+12/11/2024

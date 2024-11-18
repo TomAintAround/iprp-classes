@@ -1,0 +1,1 @@
+Acabei de criar o meu primeiro ficheiro em Python

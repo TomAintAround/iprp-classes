@@ -1,0 +1,12 @@
+Rua do Brasil Coimbra
+16/11/2024
+
+Caro/a Ronaldo,
+Mando-lhe esta carta sem saber ao certo que escrever. Eu sei que isto deve parecer confuso, mas tenho uma explicação.
+Esta carta não é nada mais que um exercício da minha cadeira de Introdução à Programação e Resolução de Problemas no curso de Engenharia Informática. O exercício consiste em pegar num ficheiro com informações de clientes duma certa empresa e enviar uma carta àqueles que nasceram antes de um dado ano. Se recebeu esta carta, parabéns! É um dos cotas qualificado a recebê-la.
+Eu sei que ler isto pode dar crises existenciais, já que é meramente uma personagem de um exercício sem importância, mas sinceramente, eu não podia me importar menos. Deixo isso aos caloiros de Psicologia.
+Além disso, como é apenas uma personagem criada por mim e que provavelmente vou me esquecer amanhã, nem sequer tem direito a terapia. Ou será que ao criá-lo acabei por criar um mundo onde todas as personagens que criei exitem, onde existem psicólogos? Deixo isto aos caloiros de Filosofia.
+Espera que tenha um bom dia e que nunca se esqueça o quão inútil é a sua vida e até a próxima vez que me sinta nostálgico e que queira experimentar os meus programas antigos.
+
+Cumprimentos,
+Tomás Correia (o vosso Deus)

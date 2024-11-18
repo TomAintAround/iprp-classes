@@ -1,0 +1,7 @@
+{'empresa': 'FUNCIONA POR FAVOR', 'nc': 239479523894, 'ano': 200, 'mes': 'Fev', 'dia': 10, 'valor': 13463246.0, 'vendedor': 'Eu'}
+{'empresa': 'FUNCIONA MÃEZINHA DO CÉU', 'nc': 34634986456, 'ano': 8768239794, 'mes': 'Fev', 'dia': 28, 'valor': 9349674.0, 'vendedor': 'Eu'}
+{'empresa': 'Correia e Companhia', 'nc': 5967475, 'ano': 5023745, 'mes': 'Abr', 'dia': 1, 'valor': 0.5, 'vendedor': 'eu'}
+{'empresa': 'FUNCIONA PLS', 'nc': 9246794569, 'ano': 29467, 'mes': 'Jun', 'dia': 4, 'valor': 234662.0, 'vendedor': 'eu'}
+{'empresa': '8037686734', 'nc': 23408857234, 'ano': 2362346, 'mes': 'Fev', 'dia': 28, 'valor': 2562562.0, 'vendedor': 'Eu'}
+{'empresa': 'Eu', 'nc': 3406734, 'ano': 2024, 'mes': 'Fev', 'dia': 29, 'valor': 2456426.0, 'vendedor': 'Ninguém'}
+{'empresa': 'EUUUUU', 'nc': 824760286, 'ano': 203, 'mes': 'Mar', 'dia': 3, 'valor': 553456245653.0, 'vendedor': 'Cristiano Ronaldo'}

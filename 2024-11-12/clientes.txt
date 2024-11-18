@@ -1,0 +1,62 @@
+{
+    "1" : {
+        "nome": "Manuel",
+        "dataNascimento": {
+            "dia": 10,
+            "mes": 4,
+            "ano": 1987
+        },
+        "morada": "Vale das Flores, Coimbra",
+        "numeroTelefone": 927564964
+    },
+    "2": {
+        "nome": "Gertrudes",
+        "dataNascimento": {
+            "dia": 1,
+            "mes": 9,
+            "ano": 1957
+        },
+        "morada": "Bela Vista, Setúbal",
+        "numeroTelefone": 969017486
+    },
+    "3": {
+        "nome": "Henrique",
+        "dataNascimento": {
+            "dia": 29,
+            "mes": 2,
+            "ano": 1996
+        },
+        "morada": "Bairro Azul, Vila Nova de Santo André",
+        "numeroTelefone": 927529015
+    },
+    "4": {
+        "nome": "Cristiano",
+        "dataNascimento": {
+            "dia": 31,
+            "mes": 12,
+            "ano": 2003
+        },
+        "morada": "Quinta da Nora, Coimbra",
+        "numeroTelefone": 927564964 
+    },
+    "5": {
+        "nome": "Ronaldo",
+        "dataNascimento": {
+            "dia": 10,
+            "mes": 4,
+            "ano": 1987
+        },
+        "morada": "Rua do Brasil, Coimbra",
+        "numeroTelefone": 927564964
+    },
+    "6": {
+        "nome": "Quitera",
+        "dataNascimento": {
+            "dia": 10,
+            "mes": 4,
+            "ano": 1987
+        },
+        "morada": "Elm Street",
+        "numeroTelefone": 927564964
+    }
+}
