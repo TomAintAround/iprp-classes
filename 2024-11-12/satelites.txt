@@ -1,0 +1,4 @@
+s1:altitude 23222km,constelacao walker,inclinacao 56
+s2:constelacao walker,altitude 525km,orbita leo
+s3:orbita leo,banda ka
+s4:orbita leo
