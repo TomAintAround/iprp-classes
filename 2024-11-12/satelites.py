@@ -2,13 +2,14 @@ def obter_info(satelites: list) -> dict:
 	dicionario: dict = dict()
 	for linha in satelites:
 		linha = linha.replace("\n", "")
-		nomeSatelite: str = linha[:2:]
+		separados1: list = linha.split(":")
+		nomeSatelite: str = separados1[0]
+		atributos: str = separados1[1].split(",")
 		dicionario[nomeSatelite] = dict()
-		atributos: list = linha[3::].split(",")
 
 		for atributo in atributos:
-			separados: list = atributo.split(" ")
-			dicionario[nomeSatelite][separados[0]] = separados[1]
+			separados2: list = atributo.split(" ")
+			dicionario[nomeSatelite][separados2[0]] = separados2[1]
 
 	return dicionario
 
